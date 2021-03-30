@@ -39,16 +39,16 @@
         // <div class="categories-container"></div>
 // })
 
-// function clickBtn() {
-//     let btn = document.querySelector('.create-btn')
-//     btn.addEventListener('click', e => {
-//         if (e.target.innerText === "Create Category") {
-//             categoryForm()
-//         } else {
-//             // form for new vid
-//         }
-//     })
-// }
+function clickBtn() {
+    let btn = document.querySelector('.create-btn')
+    btn.addEventListener('click', e => {
+        if (e.target.innerText === "Create Category") {
+            categoryForm()
+        } else {
+            // form for new vid
+        }
+    })
+}
 
 
 function categoryForm() {
