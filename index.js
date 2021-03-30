@@ -29,14 +29,6 @@
         //          retrived from tiktok embedded api
         //     </div>
         // </div>
-
-    // function for new category form
-        // <button class="create-form-btn">Create Category</button>
-        //     <div class="form-container">
-                
-        //     </div>    
-        // </div>
-        // <div class="categories-container"></div>
 // })
 
 function clickBtn() {
@@ -61,3 +53,23 @@ function categoryForm() {
         </form>`
 
 }
+
+// GET
+let categoryCollection = document.querySelector('.categories')
+fetch('http://localhost:3000/categories')
+    .then(r => r.json())
+    .then(categories => {
+        let categoryHTML = categories.map(category => {
+            return `
+            <div class="list">
+                <h3>${category.name}</h3>
+                <div class="column" id="thumbnail">
+                    thumbnails of all videos in this category (from API)
+                </div>
+                <div class="column" id="embed">
+                    embedded video of <a href="${category.videos[0].url}">this tiktok</a>
+                </div>
+            </div>`
+        })
+        categoryCollection.innerHTML += categoryHTML.join('')
+    })
