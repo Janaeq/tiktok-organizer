@@ -1,21 +1,21 @@
-let addBtn = false
+// let addBtn = false
 
 
-document.addEventListener("DOMContentLoaded", () => {
+// document.addEventListener("DOMContentLoaded", () => {
     // category and video button
-    const formBtn = document.querySelector('.create-form-btn')
-    const formContainer = document.querySelector(".form-container")
+    // const formBtn = document.querySelector('.create-form-btn')
+    // const formContainer = document.querySelector(".form-container")
 
-    formBtn.addEventListener('click', () => {
-        addBtn = !addBtn
-        if (addBtn) { 
-            formBtn.style.display = "none"; 
-            formContainer.style.display = "block";
-        } else { 
-            formBtn.style.display = "block"
-            formContainer.style.display = "none"
-        }
-    })
+    // formBtn.addEventListener('click', () => {
+    //     addBtn = !addBtn
+    //     if (addBtn) { 
+    //         formBtn.style.display = "none"; 
+    //         formContainer.style.display = "block";
+    //     } else { 
+    //         formBtn.style.display = "block"
+    //         formContainer.style.display = "none"
+    //     }
+    // })
 
     // function for each category 
         // <div class="row">
@@ -29,4 +29,35 @@ document.addEventListener("DOMContentLoaded", () => {
         //          retrived from tiktok embedded api
         //     </div>
         // </div>
-})
+
+    // function for new category form
+        // <button class="create-form-btn">Create Category</button>
+        //     <div class="form-container">
+                
+        //     </div>    
+        // </div>
+        // <div class="categories-container"></div>
+// })
+
+// function clickBtn() {
+//     let btn = document.querySelector('.create-btn')
+//     btn.addEventListener('click', e => {
+//         if (e.target.innerText === "Create Category") {
+//             categoryForm()
+//         } else {
+//             // form for new vid
+//         }
+//     })
+// }
+
+
+function categoryForm() {
+    let div = document.querySelector('.create-cat')
+    div.innerHTML = `
+        <form class="add-category">
+            <h3>Create Category</h3>
+            <input type="text" name="name" value="" placeholder="i.e: Cats" class="user-input"/>
+            <input type="submit" name="submit" value="go arrow" class="submit"/>
+        </form>`
+
+}
