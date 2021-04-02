@@ -41,11 +41,11 @@ function clickBtn() {
         }
     })
 }
+clickBtn()
 
 
 function categoryForm() {
-    let div = document.querySelector('.create-cat')
-    div.innerHTML = `
+    createCategory.innerHTML = `
         <form class="add-category">
             <h3>Create Category</h3>
             <input type="text" name="name" value="" placeholder="i.e: Cats" class="user-input"/>
@@ -67,9 +67,45 @@ fetch('http://localhost:3000/categories')
                     thumbnails of all videos in this category (from API)
                 </div>
                 <div class="column" id="embed">
-                    embedded video of <a href="${category.videos[0].url}">this tiktok</a>
+                    embedded video of this tiktok</a>
                 </div>
             </div>`
         })
         categoryCollection.innerHTML += categoryHTML.join('')
     })
+
+const createCategory = document.querySelector('.create-cat')
+createCategory.addEventListener('submit', (e) => {
+    e.preventDefault()
+    let categoryName = e.target.name.value
+
+    // POST
+    fetch('http://localhost:3000/categories', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            "name": categoryName
+        })
+    })
+    .then(resp => {
+        resp.json()
+    })
+    .then(category => {
+        console.log(category)
+        let categoryHTML = `
+        <div class="list">
+            <h3>${category.name}</h3>
+            <div class="column" id="thumbnail">
+                thumbnails of all videos in this category (from API)
+            </div>
+            <div class="column" id="embed">
+                embedded video of this tiktok</a>
+            </div>
+        </div>`
+        categoryCollection.innerHTML += categoryHTML
+    })
+    console.log(createCategory)
+})
