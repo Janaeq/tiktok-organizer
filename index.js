@@ -95,7 +95,8 @@ createCategory.addEventListener('submit', (e) => {
     })
     .then(category => {
         console.log(category)
-        let categoryHTML = `
+        // category is undefined????
+        let categoryHTML = ` 
         <div class="list">
             <h3>${category.name}</h3>
             <div class="column" id="thumbnail">
