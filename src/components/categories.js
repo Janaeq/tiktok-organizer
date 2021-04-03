@@ -2,8 +2,19 @@ class Categories {
     constructor() {
         this.categories = []
         this.adapter = new CategoryAdapter()
-        // this.bindEventListeners()
+        this.initBindingsAndEventListeners()
         this.fetchAndLoadCategories()
+    }
+
+    initBindingsAndEventListeners() {
+        this.categoriesContainer = document.querySelector('.categories-container')
+        this.createCategoryBtn = document.querySelector('.create-btn')
+        this.createCategoryBtn.addEventListener('click', this.removeBtn)
+    }
+
+    removeBtn() {
+        console.log('button is being removed')
+        this.style.display = 'none'
     }
 
     fetchAndLoadCategories() {
@@ -20,7 +31,6 @@ class Categories {
     }
     renderCategories() {
         // show categories on DOM
-        const categoriesContainer = document.querySelector('.categories-container')
-        categoriesContainer.innerHTML = this.categories.map(category => `<div class="categories"><h3>${category.name}</h3></div>`).join('')
+        this.categoriesContainer.innerHTML = this.categories.map(category => category.renderCategoryName()).join('')
     }
 }
