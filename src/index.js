@@ -44,25 +44,13 @@ const app = new App()
 
 // }
 
-// // GET
-// let categoryCollection = document.querySelector('.categories')
-// fetch('http://localhost:3000/categories')
-//     .then(r => r.json())
-//     .then(categories => {
-//         let categoryHTML = categories.map(category => {
-//             return `
-//             <div class="list">
-//                 <h3>${category.name}</h3>
-//                 <div class="column" id="thumbnail">
-//                     thumbnails of all videos in this category (from API)
-//                 </div>
-//                 <div class="column" id="embed">
-//                     embedded video of this tiktok</a>
-//                 </div>
-//             </div>`
-//         })
-//         categoryCollection.innerHTML += categoryHTML.join('')
-//     })
+
+// {/* <div class="column" id="thumbnail">
+//                 thumbnails of all videos in this category (from API)
+//             </div>
+//             <div class="column" id="embed">
+//                 embedded video of this tiktok
+//             </div> */}
 
 // const createCategory = document.querySelector('.create-cat')
 // createCategory.addEventListener('submit', (e) => {
