@@ -13,7 +13,6 @@ class Categories {
             .then(categories => {
                 // pushes the categories from the API into the categores array defined above
                 categories.forEach(category => this.categories.push(new Category(category)))
-                console.log(this.categories)
             })
             .then(() => {
                 this.renderCategories()
@@ -21,6 +20,7 @@ class Categories {
     }
     renderCategories() {
         // show categories on DOM
-        console.log("manipulate DOM here")
+        const categoriesContainer = document.querySelector('.categories-container')
+        categoriesContainer.innerHTML = this.categories.map(category => `<div class="categories"><h3>${category.name}</h3></div>`).join('')
     }
 }
