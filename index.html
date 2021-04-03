@@ -22,6 +22,11 @@
             </div>
             <div class="create-cat">
                 <button class="create-btn">Create Category</button>
+                <form class="add-category">
+                    <h3>Create Category</h3>
+                    <input type="text" name="name" value="" placeholder="i.e: Cats" class="user-input"/>
+                    <input type="submit" name="submit" value="go arrow" class="submit"/>
+                </form>
                 <!-- new category form -->
             </div>
         </div>
@@ -34,6 +39,9 @@
             <!-- field for new video -->
         <!-- categories can be deleted -->
         <!-- field for new category -->
-        <script src="index.js" async defer></script>
+        <script src="src/components/categories.js"></script>
+        <script src="src/components/app.js"></script>
+        <script src="src/adapters/CategoriesAdapter.js"></script>
+        <script src="src/index.js" async defer></script>
     </body>
 </html>
