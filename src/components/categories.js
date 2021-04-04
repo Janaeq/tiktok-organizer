@@ -8,13 +8,29 @@ class Categories {
 
     initBindingsAndEventListeners() {
         this.categoriesContainer = document.querySelector('.categories-container')
-        this.createCategoryBtn = document.querySelector('.create-btn')
-        this.createCategoryBtn.addEventListener('click', this.removeBtn)
+        this.createCategoryBtn = document.querySelector('#cat-btn')
+        this.createCategoryBtn.addEventListener('click', this.removeBtnAndShowForm)
+        this.categoryForm = document.querySelector('.add-category')
+        this.categoryForm.addEventListener('submit', this.createCategory.bind(this))
+        this.newCategoryInput = document.getElementById('new-cat-inp')
     }
 
-    removeBtn() {
-        console.log('button is being removed')
+    removeBtnAndShowForm() {
+        // console.log('button is being removed')
         this.style.display = 'none'
+        document.querySelector('.add-category').style = ""
+    }
+
+    createCategory(e) {
+        e.preventDefault()
+        const inp = this.newCategoryInput
+        this.adapter.createCategory(inp.value)
+            .then(category => {
+                console.log(category)
+                this.categories.push(new Category(category))
+                this.renderCategories()
+            })
+        inp.value = ""
     }
 
     fetchAndLoadCategories() {
