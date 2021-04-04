@@ -6,6 +6,9 @@ class Category {
     }
 
     renderCategoryName() {
-        return `<div class="categories"><h3>${this.name}</h3></div>`
+        return `
+        <div class="categories" data-id=${this.id}>
+            <h3>${this.name}</h3>
+        </div>`
     }
 }
