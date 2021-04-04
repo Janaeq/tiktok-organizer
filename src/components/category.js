@@ -9,7 +9,7 @@ class Category {
         return `
         <div class="categories" data-id=${this.id}>
             <h3>${this.name}</h3>
-            <button class="deleteBtn" data-id=${this.id} data-action="delete">delete</button>
+            <button class="delete-btn" data-id=${this.id} data-action="delete">delete</button>
         </div>`
     }
 }
