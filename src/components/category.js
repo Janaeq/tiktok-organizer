@@ -1,15 +1,37 @@
+"use strict";
 class Category {
-    constructor(categoryJSON) {
-        // console.log(categoryJSON)
-        this.id = categoryJSON.id
-        this.name = categoryJSON.name
+    static categories = []
+    constructor(id, name) {
+        this.id = id
+        this.name = name
+        this.category = document.createElement('div')
+        this.category.classList.add('category')
+        this.constructor.categories.push(this)
     }
 
-    renderCategoryName() {
-        return `
-        <div class="categories" data-id=${this.id}>
+    static addEventListeners() {
+        createCategoryBtn.addEventListener('click', this.removeBtnAndShowForm)
+        categoryForm.addEventListener('submit', categoryAPI.createCategory)
+        categoriesContainer.addEventListener('click', this.deleteCategory)
+    }
+
+    static removeBtnAndShowForm() {
+        this.style.display = 'none'
+        categoryForm.style = ""
+    }
+
+    renderCategories() {
+        this.category.innerHTML += `
             <h3>${this.name}</h3>
-            <button class="delete-btn" data-id=${this.id} data-action="delete">delete</button>
-        </div>`
+            <button class="cat-delete-btn" id="category-${this.id}" data-action="delete">delete</button>`
+        categoriesContainer.append(this.category)
+        this.category.addEventListener('click', this.deleteCategory)
+    }
+
+    deleteCategory(e) {
+        if (e.target.classList.value === 'cat-delete-btn') {
+            categoryAPI.deleteCategory(e.target.id.split('-')[1])
+            this.remove()
+        }
     }
 }
