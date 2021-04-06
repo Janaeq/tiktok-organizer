@@ -20,12 +20,14 @@ class Category {
         categoryForm.style = ""
     }
 
-    renderCategories() {
+    renderCategories = () => {
         this.category.innerHTML += `
             <h3>${this.name}</h3>
-            <button class="cat-delete-btn" id="category-${this.id}" data-action="delete">delete</button>`
+            <button class="cat-delete-btn" id="category-${this.id}" data-action="delete">delete</button>
+            <div class="videos" id="cat-${this.id}"></div>`
         categoriesContainer.append(this.category)
         this.category.addEventListener('click', this.deleteCategory)
+        Video.renderVideos(this.id)
     }
 
     deleteCategory(e) {
