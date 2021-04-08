@@ -14,8 +14,6 @@ class CategoriesAdapter {
                     c.renderCategories()
                     c.displayCategoryVideos()
                 })
-            // once all videos are loaded, add event listeners
-            Video.addEventListeners(allVideos)
             })
     }
     // CREATE
