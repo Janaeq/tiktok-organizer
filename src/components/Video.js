@@ -24,15 +24,15 @@ class Video {
     //     }
     // }
 
-    // attachToDOM() {
-    //     const videosContainer = document.getElementById(`cat-${this.category_id}`).appendChild(this.videoList)
-    //     videosContainer.innerHTML += `<li style="display: inline;">
-    //         <img src=${this.thumbnail_url} width="108" height="192">
-    //         <button class="vid-delete-btn" id="video-${this.id}" data-action="delete">DeleteVideo</button></li>`
-    //     // add event listener to display embedded video
-    //     // this.videoList.children[0].firstElementChild add embed event listener to this
-    //     document.getElementById(`video-${this.id}`).addEventListener('click', this.deleteVideo)
-    // }
+    attachToDOM() {
+        const videosContainer = document.getElementById(`cat-${this.category_id}`).appendChild(this.videoList)
+        videosContainer.innerHTML += `<li style="display: inline;">
+            <img src=${this.thumbnail_url} width="108" height="192">
+            <button class="vid-delete-btn" id="video-${this.id}" data-action="delete">DeleteVideo</button></li>`
+        // add event listener to display embedded video
+        // this.videoList.children[0].firstElementChild add embed event listener to this
+        document.getElementById(`video-${this.id}`).addEventListener('click', this.deleteVideo)
+    }
 
     // deleteVideo(e) {
     //     videoAPI.deleteVideo(this.id.split('-')[1])
