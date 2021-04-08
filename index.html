@@ -24,6 +24,7 @@
                 <button class="create-btn" id="cat-btn">Create Category</button>
                 <form class="add-category" style="display: none;" >
                     <h3>Create Category</h3>
+                    <div class="error" id="category-error"></div>
                     <input type="text" name="name" value="" placeholder="i.e: Cats" id="new-cat-inp"/>
                     <input type="submit" name="submit" value="go arrow" class="submit"/>
                 </form>
@@ -31,10 +32,10 @@
         </div>
         <div id="categories-container">
         </div>
-        <script src="src/components/Video.js"></script>
-        <script src="src/adapters/VideoAdapter.js"></script>
         <script src="src/components/category.js"></script>
         <script src="src/adapters/CategoriesAdapter.js"></script>
+        <script src="src/components/Video.js"></script>
+        <script src="src/adapters/VideoAdapter.js"></script>
         <script src="src/index.js" async defer></script>
     </body>
 </html>
