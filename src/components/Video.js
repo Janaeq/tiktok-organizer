@@ -11,18 +11,18 @@ class Video {
         this.constructor.all.push(this)
     }
 
-    // static removeBtnAndShowForm(e) {
-    //     if (e.target.classList.value === 'create-video-btn') {
-    //         const btn = e.target
-    //         const videoForm = btn.nextElementSibling
-    //         const id = parseInt(videoForm.id.split('-')[1])
-    //         btn.style.display = 'none'
-    //         videoForm.innerHTML += `<input type="text" name="url" value="" placeholder="TikTok URL" id="vid-${id}"/>
-    //             <input type="submit" name="submit" value="go arrow" class="submit"/>`
-    //         videoForm.style = ""
-    //         videoForm.addEventListener('submit', videoAPI.createVideo)
-    //     }
-    // }
+    static removeBtnAndShowForm(e) {
+        if (e.target.classList.value === 'create-video-btn') {
+            const btn = e.target
+            const videoForm = btn.nextElementSibling
+            const id = parseInt(videoForm.id.split('-')[1])
+            btn.style.display = 'none'
+            videoForm.innerHTML += `<input type="text" name="url" value="" placeholder="TikTok URL" id="vid-${id}"/>
+                <input type="submit" name="submit" value="go arrow" class="submit"/>`
+            videoForm.style = ""
+            videoForm.addEventListener('submit', videoAPI.createVideo)
+        }
+    }
 
     attachToDOM() {
         const videosContainer = document.getElementById(`cat-${this.category_id}`).appendChild(this.videoList)
