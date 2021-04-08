@@ -12,7 +12,10 @@ class CategoriesAdapter {
                 categories.map(category => {
                     const c = new Category(category.id, category.name)
                     c.renderCategories()
+                    c.displayCategoryVideos()
                 })
+            // once all videos are loaded, add event listeners
+            Video.addEventListeners(allVideos)
             })
     }
     // CREATE
@@ -34,10 +37,15 @@ class CategoriesAdapter {
             let newCategory = new Category
             newCategory.id = category.id
             newCategory.name = category.name
-            newCategory.renderCategories()
-            createCategoryBtn.style.display = ""
-            categoryForm.style.display = "none"
-            categoryInput.value = ""
+            if (category.name === "") {
+                let errors = document.getElementById('category-error')
+                errors.innerHTML = "<p> please try again </p>"
+            } else {
+                newCategory.renderCategories()
+                createCategoryBtn.style.display = ""
+                categoryForm.style.display = "none"
+                categoryInput.value = ""
+            }
         })
     }
     // DESTROY
