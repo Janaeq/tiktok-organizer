@@ -11,4 +11,5 @@ Category.addEventListeners()
 
 // Video
 const videoAPI = new VideoAdapter('http://localhost:3000/videos')
+const allVideos = Video.all
 videoAPI.getVideos()
