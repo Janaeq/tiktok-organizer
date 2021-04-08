@@ -18,4 +18,3 @@ class VideoAdapter {
         })
     }
 }
-// may have to nest URL in API to get localhost:3000/categories/:id/videos
