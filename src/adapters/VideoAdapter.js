@@ -49,8 +49,15 @@ class VideoAdapter {
                 newVideo.attachToDOM()
                 document.getElementById(`form-${newVideo.category_id}`).style.display = "none"
                 document.getElementById(`new-${video.category_id}`).style = ""
-                Video.addEventListeners(allVideos)
             })
         }
+    }
+
+    // DELETE
+    deleteVideo = (id) => {
+        fetch(videoAPI.url + `/${id}`, {
+            method: "DELETE"
+        })
+        .then(r => r.json())
     }
 }
