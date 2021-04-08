@@ -26,9 +26,10 @@ class Category {
             <button class="cat-delete-btn" id="category-${this.id}" data-action="delete">DeleteCategory</button>
             <button class="create-video-btn" id="new-${this.id}">Add Video</button>
             <form class="add-video" id="form-${this.id}" style="display: none;"><p>Add Video</p><div class="error" id="category-error"></div></form>
-            <div class="videos" id="cat-${this.id}"><ul style="list-style-type:none;"></ul></div>`
+            <div class="videos" id="cat-${this.id}"></div>`
         categoriesContainer.append(this.category)
         this.category.addEventListener('click', this.deleteCategory)
+        this.category.addEventListener('click', Video.removeBtnAndShowForm)
     }
 
     deleteCategory(e) {
@@ -45,6 +46,8 @@ class Category {
             return video.category_id === this.id
         })
         // call a video function with the new array as the argument
-        Video.renderVideos(filteredVideos)
+        filteredVideos.forEach(video => {
+            video.attachToDOM()
+        })
     }
 }
