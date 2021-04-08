@@ -34,8 +34,8 @@ class Video {
         document.getElementById(`video-${this.id}`).addEventListener('click', this.deleteVideo)
     }
 
-    // deleteVideo(e) {
-    //     videoAPI.deleteVideo(this.id.split('-')[1])
-    //     this.parentElement.parentElement.remove()
-    // }
+    deleteVideo(e) {
+        videoAPI.deleteVideo(this.id.split('-')[1])
+        this.parentElement.parentElement.remove()
+    }
 }
