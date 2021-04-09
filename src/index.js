@@ -13,3 +13,14 @@ Category.addEventListeners()
 const videoAPI = new VideoAdapter('http://localhost:3000/videos')
 const allVideos = Video.all
 videoAPI.getVideos()
+
+// Messages
+const displayMessage = (message, duration) => {
+    const msg = document.createElement("div")
+    msg.classList.add("message")
+    msg.innerHTML = `<p>${message}</p>`
+    categoryForm.parentElement.append(msg)
+    setTimeout(function () {
+      msg.parentElement.removeChild(msg)
+    }, duration)
+  }

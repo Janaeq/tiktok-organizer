@@ -35,15 +35,17 @@ class CategoriesAdapter {
             let newCategory = new Category
             newCategory.id = category.id
             newCategory.name = category.name
-            if (category.name === "") {
-                let errors = document.getElementById('category-error')
-                errors.innerHTML = "<p> please try again </p>"
+            if (category.message) {
+                displayMessage(category.message, 2000)
             } else {
                 newCategory.renderCategories()
                 createCategoryBtn.style.display = ""
                 categoryForm.style.display = "none"
                 categoryInput.value = ""
             }
+        })
+        .catch(category => {
+            displayMessage(category.message, 2000)
         })
     }
     // DESTROY
@@ -52,5 +54,8 @@ class CategoriesAdapter {
             method: "DELETE"
         })
         .then(r => r.json())
+        .then(category => {
+            displayMessage(category.message, 2000)
+        })
     }
 }
