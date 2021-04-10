@@ -17,7 +17,7 @@ class Video {
             const videoForm = btn.nextElementSibling
             const id = parseInt(videoForm.id.split('-')[1])
             btn.style.display = 'none'
-            videoForm.innerHTML += `<input type="text" name="url" value="" placeholder="TikTok URL" id="vid-${id}"/>
+            videoForm.innerHTML = `<input type="text" name="url" value="" placeholder="TikTok URL" id="vid-${id}"/>
                 <input type="submit" name="submit" value="go arrow" class="submit"/>`
             videoForm.style = ""
             videoForm.addEventListener('submit', videoAPI.createVideo)

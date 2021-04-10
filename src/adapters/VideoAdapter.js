@@ -23,7 +23,7 @@ class VideoAdapter {
     createVideo = (e) => {
         e.preventDefault()
         const category_id = parseInt(e.target.id.split('-')[1])
-        const url = e.target.children[1].value
+        const url = e.target.children[0].value
         let video = {url, category_id}
             fetch(this.url, {
                 method: "POST", 
@@ -59,5 +59,8 @@ class VideoAdapter {
             method: "DELETE"
         })
         .then(r => r.json())
+        .then(video => {
+            displayMessage(video.message, 2000, video.category_id)
+        })
     }
 }

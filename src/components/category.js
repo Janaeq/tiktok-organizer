@@ -24,8 +24,10 @@ class Category {
         this.category.innerHTML += `
             <h3>${this.name}</h3>
             <button class="cat-delete-btn" id="category-${this.id}" data-action="delete">DeleteCategory</button>
+            <div class"video-form-${this.id}">
             <button class="create-video-btn" id="new-${this.id}">Add Video</button>
             <form class="add-video" id="form-${this.id}" style="display: none;"><p>Add Video</p></form>
+            </div>
             <div class="videos" id="cat-${this.id}"></div>`
         categoriesContainer.append(this.category)
         this.category.addEventListener('click', this.deleteCategory)

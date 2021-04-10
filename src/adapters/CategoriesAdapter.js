@@ -7,14 +7,14 @@ class CategoriesAdapter {
     getCategories = () => {
         // fetch request to base URL, then parse JSON from the response.
         fetch(this.url)
-            .then(r => r.json())
-            .then(categories => {
-                categories.map(category => {
-                    const c = new Category(category.id, category.name)
-                    c.renderCategories()
-                    c.displayCategoryVideos()
-                })
+        .then(r => r.json())
+        .then(categories => {
+            categories.map(category => {
+                const c = new Category(category.id, category.name)
+                c.renderCategories()
+                c.displayCategoryVideos()
             })
+        })
     }
     // CREATE
     createCategory = (e) => {
