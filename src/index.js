@@ -15,12 +15,19 @@ const allVideos = Video.all
 videoAPI.getVideos()
 
 // Messages
-const displayMessage = (message, duration) => {
+const displayMessage = (message, duration, id) => {
     const msg = document.createElement("div")
     msg.classList.add("message")
     msg.innerHTML = `<p>${message}</p>`
-    categoryForm.parentElement.append(msg)
-    setTimeout(function () {
-      msg.parentElement.removeChild(msg)
-    }, duration)
+    if (id) {
+        document.getElementById(`form-${id}`).appendChild(msg)
+        setTimeout(function () {
+        msg.remove()
+        }, 2000)
+    } else {
+        categoryForm.parentElement.append(msg)
+        setTimeout(function () {
+        msg.remove()
+        }, duration)
+    }
   }

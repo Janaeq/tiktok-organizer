@@ -35,8 +35,8 @@ class CategoriesAdapter {
             let newCategory = new Category
             newCategory.id = category.id
             newCategory.name = category.name
-            if (category.message) {
-                displayMessage(category.message, 2000)
+            if (category.error) {
+                displayMessage(category.error, 2000)
             } else {
                 newCategory.renderCategories()
                 createCategoryBtn.style.display = ""
@@ -45,7 +45,7 @@ class CategoriesAdapter {
             }
         })
         .catch(category => {
-            displayMessage(category.message, 2000)
+            displayMessage(category.error, 2000)
         })
     }
     // DESTROY

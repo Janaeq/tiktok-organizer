@@ -23,13 +23,8 @@ class VideoAdapter {
     createVideo = (e) => {
         e.preventDefault()
         const category_id = parseInt(e.target.id.split('-')[1])
-        const url = e.target.children[2].value
-        const errors = e.target.children[1]
+        const url = e.target.children[1].value
         let video = {url, category_id}
-
-        if (url === "") {
-            errors.innerHTML = 'Please try again'
-        } else {
             fetch(this.url, {
                 method: "POST", 
                 headers: {
@@ -46,11 +41,16 @@ class VideoAdapter {
                 newVideo.thumbnail_url = video.thumbnail_url
                 newVideo.embed_html = video.embed_html
                 newVideo.category_id = video.category_id
-                newVideo.attachToDOM()
-                document.getElementById(`form-${newVideo.category_id}`).style.display = "none"
-                document.getElementById(`new-${video.category_id}`).style = ""
+                if (video.error) {
+                    displayMessage(video.error, 2000, category_id)
+                    document.getElementById(`vid-${category_id}`).value = ""
+                } else {
+                    newVideo.attachToDOM()
+                    document.getElementById(`form-${newVideo.category_id}`).style.display = "none"
+                    document.getElementById(`new-${video.category_id}`).style = ""
+                }
             })
-        }
+        // }
     }
 
     // DELETE
