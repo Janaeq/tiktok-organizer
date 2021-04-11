@@ -31,6 +31,7 @@ class Category {
             </div>
             <div class="row" id="cat-${this.id}">
             <div class="column"><ul></ul></div>
+            <div class="column" id="embedded-video"></div>
             </div>`
         categoriesContainer.append(this.category)
         this.category.addEventListener('click', this.deleteCategory)
