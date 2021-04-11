@@ -1,9 +1,10 @@
 "use strict";
 class Category {
     static categories = []
-    constructor(id, name) {
+    constructor(id, name, videos) {
         this.id = id
         this.name = name
+        this.videos = videos
         this.category = document.createElement('div')
         this.category.classList.add('category')
         this.constructor.categories.push(this)
@@ -24,11 +25,13 @@ class Category {
         this.category.innerHTML += `
             <h3>${this.name}</h3>
             <button class="cat-delete-btn" id="category-${this.id}" data-action="delete">DeleteCategory</button>
-            <div class"video-form-${this.id}">
+            <div>
             <button class="create-video-btn" id="new-${this.id}">Add Video</button>
-            <form class="add-video" id="form-${this.id}" style="display: none;"><p>Add Video</p></form>
+            <form class="form" id="form-${this.id}" style="display: none;"><p>Add Video</p></form>
             </div>
-            <div class="videos" id="cat-${this.id}"></div>`
+            <div class="row" id="cat-${this.id}">
+            <div class="column"><ul></ul></div>
+            </div>`
         categoriesContainer.append(this.category)
         this.category.addEventListener('click', this.deleteCategory)
         this.category.addEventListener('click', Video.removeBtnAndShowForm)

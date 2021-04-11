@@ -10,7 +10,7 @@ class CategoriesAdapter {
         .then(r => r.json())
         .then(categories => {
             categories.map(category => {
-                const c = new Category(category.id, category.name)
+                const c = new Category(category.id, category.name, category.videos)
                 c.renderCategories()
                 c.displayCategoryVideos()
             })

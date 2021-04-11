@@ -6,7 +6,7 @@ class Video {
         this.embed_html = embed_html
         this.category_id = category_id
         this.thumbnail_url = thumbnail_url
-        this.videoList = document.createElement('ul')
+        this.videoList = document.createElement('li')
         this.videoList.setAttribute('style', "list-style-type:none;")
         this.constructor.all.push(this)
     }
@@ -25,17 +25,25 @@ class Video {
     }
 
     attachToDOM() {
-        const videosContainer = document.getElementById(`cat-${this.category_id}`).appendChild(this.videoList)
-        videosContainer.innerHTML += `<li style="display: inline;">
-            <img src=${this.thumbnail_url} width="108" height="192">
-            <button class="vid-delete-btn" id="video-${this.id}" data-action="delete">DeleteVideo</button></li>`
-        // add event listener to display embedded video
-        // this.videoList.children[0].firstElementChild add embed event listener to this
+        this.videoList.innerHTML = `
+        <img src=${this.thumbnail_url} width="108" height="192" id="img-${this.id}">
+        <button class="vid-delete-btn" id="video-${this.id}" data-action="delete">DeleteVideo</button>`
+        const videosContainer = document.querySelector(`div#cat-${this.category_id}.row`).firstElementChild 
+        videosContainer.firstElementChild.appendChild(this.videoList)
         document.getElementById(`video-${this.id}`).addEventListener('click', this.deleteVideo)
+        document.getElementById(`img-${this.id}`).addEventListener('click', this.showEmbeddedVideo)
     }
 
-    deleteVideo(e) {
+    deleteVideo() {
         videoAPI.deleteVideo(this.id.split('-')[1])
-        this.parentElement.parentElement.remove()
+        this.parentElement.remove()
+    }
+
+    showEmbeddedVideo() {
+        let vid = allVideos.find(video => {
+            return video.id === parseInt(this.id.split('-')[1])
+        })
+        const v = document.getElementById('embedded-video')
+        v.innerHTML = vid.embed_html
     }
 }
