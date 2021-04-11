@@ -43,8 +43,7 @@ class Video {
         let vid = allVideos.find(video => {
             return video.id === parseInt(this.id.split('-')[1])
         })
-        // const v = document.getElementById('embedded-video')
-        // v.innerHTML = vid.embed_html
-        document.getElementById(`cat-1`).lastElementChild.innerHTML = vid.embed_html
+        const v = document.getElementById('embedded-video')
+        v.innerHTML = vid.embed_html
     }
 }
