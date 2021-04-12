@@ -6,7 +6,7 @@ class Category {
         this.name = name
         this.videos = videos
         this.category = document.createElement('div')
-        this.category.classList.add('category')
+        this.category.classList.add('category', 'text-capitalize', 'panel', 'panel-default')
         this.constructor.categories.push(this)
     }
 
@@ -23,15 +23,15 @@ class Category {
 
     renderCategories = () => {
         this.category.innerHTML += `
-            <h3>${this.name}</h3>
-            <button class="cat-delete-btn" id="category-${this.id}" data-action="delete">DeleteCategory</button>
+            <div class="panel-heading">
+                <h3 style="display: inline-block;">${this.name}</h3>
+                <button class="cat-delete-btn" id="category-${this.id}" data-action="delete">X</button>
+            </div>
+            <button class="create-video-btn" id="new-${this.id}">+</button>
             <div>
-            <button class="create-video-btn" id="new-${this.id}">Add Video</button>
             <form class="form" id="form-${this.id}" style="display: none;"><p>Add Video</p></form>
             </div>
-            <div class="row" id="cat-${this.id}">
-            <div class="column"><ul></ul></div>
-            </div>`
+            <div class="row" id="cat-${this.id}"></div>`
         categoriesContainer.append(this.category)
         this.category.addEventListener('click', this.deleteCategory)
         this.category.addEventListener('click', Video.removeBtnAndShowForm)

@@ -1,11 +1,16 @@
-.row {
-    display: flex;
-}
-  
-.column {
-    flex: 50%;
+.jumbotron {
+    background-image: url('https://media.istockphoto.com/vectors/abstract-glitch-tiktok-background-vector-illustration-abstract-light-vector-id1269932725?k=6&m=1269932725&s=170667a&w=0&h=b_wbMJL5NaQ_gizya9dx4M0LQFAvw8RJz5EVuXvxIs4=');
+    background-size: cover; 
+    margin-bottom: 0px;
 }
 
-li {
-    float: left;
+mark {
+    background: black;
+    color: white;
 }
+
+
+/* body {
+    background-image: url('https://media.istockphoto.com/vectors/abstract-glitch-tiktok-background-vector-illustration-abstract-light-vector-id1269932725?k=6&m=1269932725&s=170667a&w=0&h=b_wbMJL5NaQ_gizya9dx4M0LQFAvw8RJz5EVuXvxIs4=');
+    background-size: cover; 
+} */
