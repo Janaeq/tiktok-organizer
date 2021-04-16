@@ -3,9 +3,9 @@ class Video {
     constructor(id, url, thumbnail_url, embed_html, category_id) {
         this.id = id
         this.url = url
+        this.thumbnail_url = thumbnail_url
         this.embed_html = embed_html
         this.category_id = category_id
-        this.thumbnail_url = thumbnail_url
         this.videoGrid = document.createElement('div')
         this.videoGrid.classList.add('col-md-3', 'col-sm-4', 'col-xs-6')
         this.constructor.all.push(this)

@@ -9,12 +9,13 @@ class VideoAdapter {
         .then(r => r.json())
         .then(videos => {
             videos.map(video => {
-                const newVideo = new Video
-                newVideo.id = video.id
-                newVideo.url = video.url
-                newVideo.category_id = video.category_id
-                newVideo.thumbnail_url = video.thumbnail_url
-                newVideo.embed_html = video.embed_html
+                const newVideo = new Video(
+                    video.id,
+                    video.url,
+                    video.thumbnail_url,
+                    video.embed_html,
+                    video.category.id,
+                )
             })
         })
     }

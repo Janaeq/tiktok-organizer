@@ -10,7 +10,10 @@ mark {
 }
 
 
-/* body {
-    background-image: url('https://media.istockphoto.com/vectors/abstract-glitch-tiktok-background-vector-illustration-abstract-light-vector-id1269932725?k=6&m=1269932725&s=170667a&w=0&h=b_wbMJL5NaQ_gizya9dx4M0LQFAvw8RJz5EVuXvxIs4=');
-    background-size: cover; 
-} */
+body {
+    background-color: black; 
+}
+
+.panel-default {
+    background-color: rgba(255, 255, 255, 0.253);
+}
