@@ -4,7 +4,7 @@
 const categoryAPI = new CategoriesAdapter('http://localhost:3000/categories')
 const categoriesContainer = document.querySelector('#categories-container')
 const createCategoryBtn = document.querySelector('#cat-btn')
-const categoryForm = document.querySelector('.add-category')
+const categoryForm = document.getElementById('add-category')
 const categoryInput = document.getElementById('new-cat-inp')
 const description = document.getElementById('description')
 const categoryFormDiv = document.getElementById('new-category-form')
@@ -14,6 +14,8 @@ Category.addEventListeners()
 // Video
 const videoAPI = new VideoAdapter('http://localhost:3000/videos')
 const allVideos = Video.all
+const addVideoBtn = document.getElementById('vid-btn-')
+const videoForm = document.getElementById('add-video-')
 videoAPI.getVideos()
 
 // Messages

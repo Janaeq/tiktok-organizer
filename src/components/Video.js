@@ -12,23 +12,25 @@ class Video {
         this.constructor.all.push(this)
     }
 
-    static removeBtnAndShowForm(e) {
-        if (e.target.classList.value === 'create-video-btn') {
-            const btn = e.target
-            const videoForm = btn.nextElementSibling.firstElementChild
-            const id = parseInt(videoForm.id.split('-')[1])
-            btn.style.display = 'none'
-            videoForm.innerHTML = `<input type="url" name="url" value="" placeholder="TikTok URL" id="vid-${id}"/>
-                <input type="submit" name="submit" value="go arrow" class="submit"/>`
-            videoForm.style = ""
-            videoForm.addEventListener('submit', videoAPI.createVideo)
-        }
+    static removeBtnAndShowForm() {
+        const categoryId = parseInt(addVideoBtn.id.split('-')[2])
+        addVideoBtn.style.display = 'none'
+        videoForm.id += categoryId
+        videoForm.style = ""
+        videoForm.addEventListener('submit', videoAPI.createVideo)
+        
     }
 
     attachToDOM() {
-        this.videoGrid.innerHTML = `<img class="thumbnail" src=${this.thumbnail_url} width="216" height="384" id="img-${this.id}">`
+        this.videoGrid.innerHTML = `<img class="thumbnail" style="display: inline" src=${this.thumbnail_url} width="216" height="384" id="img-${this.id}">`
         categoriesContainer.appendChild(this.videoGrid)
-        this.videoGrid.addEventListener('click', this.showEmbeddedVideo)
+        this.videoGrid.addEventListener('click', this.showOptions)
+    }
+
+    showOptions() {
+        this.firstElementChild.style.display = "inline"
+        // this.innerHTML += 
+
     }
 
     deleteVideo() {

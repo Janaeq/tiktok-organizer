@@ -56,5 +56,8 @@ class Category {
         })
         description.style.display = "none"
         categoryFormDiv.style.display = "none"
+        addVideoBtn.id += categoryId
+        addVideoBtn.style.display = ""
+        addVideoBtn.addEventListener('click', Video.removeBtnAndShowForm)
     }
 }
