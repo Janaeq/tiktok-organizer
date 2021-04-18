@@ -16,15 +16,19 @@ const videoAPI = new VideoAdapter('http://localhost:3000/videos')
 const allVideos = Video.all
 const addVideoBtn = document.getElementById('vid-btn-')
 const videoForm = document.getElementById('add-video-')
+const embeddedVideo = document.getElementById('embedded-video')
+const newVideoValue = document.getElementById('new-vid-inp')
+const backToCategories = document.getElementById('back-to-categories')
 videoAPI.getVideos()
 
 // Messages
 const displayMessage = (message, duration, id) => {
     const msg = document.createElement("div")
     msg.classList.add("message")
+    msg.style.color = "white"
     msg.innerHTML = `<p>${message}</p>`
     if (id) {
-        document.getElementById(`form-${id}`).appendChild(msg)
+        document.getElementById(`new-video-form`).appendChild(msg)
         setTimeout(function () {
         msg.remove()
         }, 2000)

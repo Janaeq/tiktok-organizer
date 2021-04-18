@@ -12,7 +12,6 @@ class CategoriesAdapter {
             categories.map(category => {
                 const c = new Category(category.id, category.name, category.videos)
                 c.renderCategories()
-                // c.displayCategoryVideos()
             })
         })
     }
@@ -32,12 +31,10 @@ class CategoriesAdapter {
         })
         .then(r => r.json())
         .then(category => {
-            let newCategory = new Category
-            newCategory.id = category.id
-            newCategory.name = category.name
             if (category.error) {
                 displayMessage(category.error, 2000)
             } else {
+                let newCategory = new Category(category.id, category.name, category.videos)
                 newCategory.renderCategories()
                 createCategoryBtn.style.display = ""
                 categoryForm.style.display = "none"

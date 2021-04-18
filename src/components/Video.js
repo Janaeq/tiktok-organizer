@@ -13,10 +13,9 @@ class Video {
     }
 
     static removeBtnAndShowForm() {
-        const categoryId = parseInt(addVideoBtn.id.split('-')[2])
         addVideoBtn.style.display = 'none'
-        videoForm.id += categoryId
         videoForm.style = ""
+        newVideoValue.value = ""
         videoForm.addEventListener('submit', videoAPI.createVideo)
         
     }
@@ -24,25 +23,47 @@ class Video {
     attachToDOM() {
         this.videoGrid.innerHTML = `<img class="thumbnail" style="display: inline" src=${this.thumbnail_url} width="216" height="384" id="img-${this.id}">`
         categoriesContainer.appendChild(this.videoGrid)
-        this.videoGrid.addEventListener('click', this.showOptions)
+        this.videoGrid.firstElementChild.addEventListener('click', this.showOptions)
     }
 
     showOptions() {
-        this.firstElementChild.style.display = "inline"
-        // this.innerHTML += 
-
+        const parent = this.parentElement
+        const icons = document.createElement('div')
+        icons.id = `${this.id}-icons`
+        icons.innerHTML = `
+            <i class="far fa-play-circle fa-2x" style="color: white"></i>
+            <br>
+            <br>
+            <i class="far fa-trash-alt fa-2x" style="color: white"></i>`
+        if (parent.lastElementChild === this) {
+            icons.style.display = "inline-block"
+            parent.appendChild(icons)
+            parent.lastElementChild.addEventListener('click', Video.handleOptions)
+        } else {
+            parent.lastElementChild.remove()
+        }
     }
 
-    deleteVideo() {
-        videoAPI.deleteVideo(this.id.split('-')[1])
-        this.parentElement.remove()
+    static handleOptions(e) {
+        const videoId = parseInt(this.id.split('-')[1])
+        if (e.target.classList.contains('fa-play-circle')) {
+            Video.showEmbeddedVideo(videoId)
+            this.style.display = "none"
+        } else if (e.target.classList.contains('fa-trash-alt')) {
+            Video.deleteVideo(videoId)
+        }
     }
 
-    showEmbeddedVideo() {
+    static deleteVideo(id) {
+        videoAPI.deleteVideo(id)
+        document.getElementById(`video-${id}`).remove()
+    }
+
+    static showEmbeddedVideo(id) {
         let vid = allVideos.find(video => {
-            return video.id === parseInt(this.id.split('-')[1])
+            return video.id === id
         })
-        const v = document.getElementById('embedded-video')
-        v.innerHTML = vid.embed_html
+        embeddedVideo.innerHTML = vid.embed_html
+        $("#embedded-video").load(location.href + " #embedded-video");
     }
 }

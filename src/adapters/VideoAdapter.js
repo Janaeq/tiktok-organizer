@@ -36,17 +36,17 @@ class VideoAdapter {
         })
         .then(r => r.json())
         .then(video => {
-            let newVideo = new Video(
-                video.id,
-                video.url,
-                video.thumbnail_url,
-                video.embed_html,
-                video.category.id,
-            )
             if (video.error) {
                 displayMessage(video.error, 2000, category_id)
-                document.getElementById(`vid-${category_id}`).value = ""
+                document.getElementById(`new-vid-inp`).value = ""
             } else {
+                let newVideo = new Video(
+                    video.id,
+                    video.url,
+                    video.thumbnail_url,
+                    video.embed_html,
+                    video.category.id,
+                )
                 newVideo.attachToDOM()
                 videoForm.style.display = "none"
                 addVideoBtn.style = ""

@@ -6,7 +6,7 @@ class Category {
         this.name = name
         this.videos = videos
         this.category = document.createElement('div')
-        this.category.classList.add('category', 'text-capitalize', 'column')
+        this.category.classList.add('category', 'text-capitalize', 'col-sm-4')
         this.category.id = (`cat-${this.id}`)
         this.category.style.display = "inline"
         this.constructor.all.push(this)
@@ -24,40 +24,63 @@ class Category {
 
     renderCategories = () => {
         this.category.innerHTML += `
-            <button>
-                <h3 style="display: inline-block;">${this.name}</h3>
-            </button>`
+            <div class="card" style="width: 18rem;">
+                <h3>${this.name}</h3>
+            </div>`
         categoriesContainer.append(this.category)
         this.category.addEventListener('click', this.displayCategoryVideos)
     }
 
-    // deleteCategory(e) {
-    //     console.log(e.target)
-        // if (e.target.classList.value === 'cat-delete-btn') {
-        //     categoryAPI.deleteCategory(e.target.id.split('-')[1])
-        //     this.remove()
-        // }
-    // }
+    static deleteCategory(e) {
+        categoryAPI.deleteCategory(e.target.id.split('-')[1])
+        Category.goHome()
+    }
 
     displayCategoryVideos() {
         // clear categories container
         const categoryId = parseInt(this.id.split('-')[1])
-        const category = Category.all[categoryId - 1]
-        categoriesContainer.innerHTML = `<h2 class="text-left" style="color: white">${category.name}</h2>`
+        const category = Category.all.find(category => {
+           return category.id === categoryId
+        })
+        categoriesContainer.innerHTML = `
+        <div>
+            <h2 class="text-left" style="color: white; display: inline-block;">${category.name}</h2>
+            <i id="del-${category.id}" class="far fa-trash-alt" style="color: white; margin-left: 5px;"></i>
+        </div>
+        <br>
+        <br>`
 
+        document.getElementById(`del-${category.id}`).addEventListener('click', Category.deleteCategory)
         // filter over all videos
         // create an array containing all of this category's videos
         const filteredVideos = allVideos.filter(video => {
             return video.category_id === categoryId
         })
-        // call a video function with the new array as the argument
+
+        // call a video function to attach video to dom
         filteredVideos.forEach(video => {
             video.attachToDOM()
         })
+
         description.style.display = "none"
         categoryFormDiv.style.display = "none"
         addVideoBtn.id += categoryId
-        addVideoBtn.style.display = ""
+        videoForm.id += categoryId
+        addVideoBtn.style.display = "inline"
+        backToCategories.style.display = "inline"
         addVideoBtn.addEventListener('click', Video.removeBtnAndShowForm)
+        backToCategories.addEventListener('click', Category.goHome)
+    }
+
+    static goHome() {
+        addVideoBtn.style.display = "none"
+        videoForm.style.display = "none"
+        backToCategories.style.display = "none"
+        description.style = ""
+        categoryFormDiv.style = ""
+        categoriesContainer.innerText = ""
+        categoryAPI.getCategories()
+        videoForm.id = 'add-video-'
+        addVideoBtn.id = 'vid-btn-'
     }
 }
