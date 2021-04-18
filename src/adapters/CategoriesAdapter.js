@@ -12,7 +12,7 @@ class CategoriesAdapter {
             categories.map(category => {
                 const c = new Category(category.id, category.name, category.videos)
                 c.renderCategories()
-                c.displayCategoryVideos()
+                // c.displayCategoryVideos()
             })
         })
     }

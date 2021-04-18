@@ -25,7 +25,7 @@
                         <p style="color: white;"><mark>Organize your favorite TikToks in a few easy steps!
                             <br>Click on "Create Category" to get started.</mark></p>
                     </div>
-                    <div class="new-category-form">
+                    <div id="new-category-form">
                         <button class="btn btn-default btn-lg" id="cat-btn">Create Category</button>
                         <form class="add-category" style="display: none;" >
                             <h3 style="color: white;">Create Category</h3>
@@ -36,8 +36,8 @@
                 </div>
             </div>
         </div>
-        <div id="categories-container"></div>
-        <div id="embedded-video"></div>
+        <div class="text-center" id="categories-container"></div>
+        <div style="background-color: whitesmoke" id="embedded-video"></div>
 
         <script async src="https://www.tiktok.com/embed.js"></script>
         <script src="src/components/category.js"></script>

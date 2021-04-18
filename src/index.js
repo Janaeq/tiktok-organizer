@@ -6,6 +6,8 @@ const categoriesContainer = document.querySelector('#categories-container')
 const createCategoryBtn = document.querySelector('#cat-btn')
 const categoryForm = document.querySelector('.add-category')
 const categoryInput = document.getElementById('new-cat-inp')
+const description = document.getElementById('description')
+const categoryFormDiv = document.getElementById('new-category-form')
 categoryAPI.getCategories()
 Category.addEventListeners()
 

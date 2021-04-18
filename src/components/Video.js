@@ -8,6 +8,7 @@ class Video {
         this.category_id = category_id
         this.videoGrid = document.createElement('div')
         this.videoGrid.classList.add('col-md-3', 'col-sm-4', 'col-xs-6')
+        this.videoGrid.id = `video-${this.id}`
         this.constructor.all.push(this)
     }
 
@@ -25,13 +26,9 @@ class Video {
     }
 
     attachToDOM() {
-        this.videoGrid.innerHTML = `
-        <img class="thumbnail" src=${this.thumbnail_url} width="108" height="192" id="img-${this.id}">
-        <button class="vid-delete-btn" id="video-${this.id}" data-action="delete"">X</button>`
-        const videosContainer = document.querySelector(`div#cat-${this.category_id}.row`)
-        videosContainer.appendChild(this.videoGrid)
-        document.getElementById(`video-${this.id}`).addEventListener('click', this.deleteVideo)
-        document.getElementById(`img-${this.id}`).addEventListener('click', this.showEmbeddedVideo)
+        this.videoGrid.innerHTML = `<img class="thumbnail" src=${this.thumbnail_url} width="216" height="384" id="img-${this.id}">`
+        categoriesContainer.appendChild(this.videoGrid)
+        this.videoGrid.addEventListener('click', this.showEmbeddedVideo)
     }
 
     deleteVideo() {
