@@ -37,8 +37,8 @@
                         </form>
                     </div>
                     <div id="new-video-form">
-                        <button class="btn btn-default btn-lg" id="vid-btn-" style="display: none;">Add Video</button>
                         <button class="btn btn-default btn-lg" id="back-to-categories" style="display: none;">Choose a Different Category</button>
+                        <button class="btn btn-default btn-lg" id="vid-btn-" style="display: none;">Add Video</button>
                         <form id="add-video-" style="display: none;">
                             <h3 style="color: white;">Add Video</h3>
                             <input type="text" name="url" value="" placeholder="Enter a TikTok URL" id="new-vid-inp"/>
@@ -49,7 +49,8 @@
             </div>
         </div>
         <div class="text-center" id="categories-container"></div>
-        <div class="popup" id="embedded-video"></div>
+        <div class="overlay" id="overlay" style="display: none;"></div>
+        <div class="popup" id="embedded-video" style="display: none;"></div>
 
         <script async src="https://www.tiktok.com/embed.js"></script>
         <script src="src/components/category.js"></script>

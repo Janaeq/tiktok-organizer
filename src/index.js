@@ -19,6 +19,7 @@ const videoForm = document.getElementById('add-video-')
 const embeddedVideo = document.getElementById('embedded-video')
 const newVideoValue = document.getElementById('new-vid-inp')
 const backToCategories = document.getElementById('back-to-categories')
+const overlay = document.getElementById('overlay')
 videoAPI.getVideos()
 
 // Messages

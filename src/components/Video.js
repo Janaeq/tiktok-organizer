@@ -29,14 +29,15 @@ class Video {
     showOptions() {
         const parent = this.parentElement
         const icons = document.createElement('div')
+        icons.classList = "icons"
         icons.id = `${this.id}-icons`
         icons.innerHTML = `
-            <i class="far fa-play-circle fa-2x" style="color: white"></i>
+            <i class="far fa-play-circle fa-2x"></i>
             <br>
             <br>
-            <i class="far fa-trash-alt fa-2x" style="color: white"></i>`
+            <i class="far fa-trash-alt fa-2x"></i>`
         if (parent.lastElementChild === this) {
-            icons.style.display = "inline-block"
+            // icons.style.display = "inline-block"
             parent.appendChild(icons)
             parent.lastElementChild.addEventListener('click', Video.handleOptions)
         } else {
@@ -63,7 +64,15 @@ class Video {
         let vid = allVideos.find(video => {
             return video.id === id
         })
+        overlay.style = ""
+        embeddedVideo.style = ""
         embeddedVideo.innerHTML = vid.embed_html
-        $("#embedded-video").load(location.href + " #embedded-video");
+        overlay.addEventListener('click', Video.removeEmbeddedVideo)
+        // $("#embedded-video").load(location.href + " #embedded-video");
+    }
+
+    static removeEmbeddedVideo() {
+        overlay.style.display = "none"
+        embeddedVideo.style.display = "none"
     }
 }
