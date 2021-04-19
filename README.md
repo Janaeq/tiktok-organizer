@@ -30,3 +30,4 @@ Once deployed, this program will run on an http server that will allow the video
 Pull requests are welcome. Please open an issue for major changes.
 
 ## License
+[MIT License](https://github.com/Janaeq/tiktok-organizer-frontend/blob/main/LICENSE)
