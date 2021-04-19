@@ -4,7 +4,7 @@ This is an application that organizes TikTok videos into categories.
 
 
 ## How It Works
-- Fork and clone this repo, along with the application's [backend API](https://github.com/Janaeq/tiktok-organizer-api.git).
+Fork and clone this repo, along with the application's [backend API](https://github.com/Janaeq/tiktok-organizer-api.git).
 
 ### Backend
 Run the following code in your terminal to set up the API and start your server.
