@@ -45,7 +45,7 @@ class Category {
         categoriesContainer.innerHTML = `
         <div>
             <h2 class="text-left" style="color: white; display: inline-block;">${category.name}</h2>
-            <i id="del-${category.id}" class="far fa-trash-alt" style="color: white; margin-left: 5px;"></i>
+            <i id="del-${category.id}" class="far fa-trash-alt" style="margin-left: 5px;"></i>
         </div>
         <br>
         <br>`
