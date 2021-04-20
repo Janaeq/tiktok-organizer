@@ -34,6 +34,7 @@ class Category {
     static deleteCategory(e) {
         categoryAPI.deleteCategory(e.target.id.split('-')[1])
         Category.goHome()
+        categoryAPI.getCategories()
     }
 
     displayCategoryVideos() {
@@ -79,7 +80,6 @@ class Category {
         description.style = ""
         categoryFormDiv.style = ""
         categoriesContainer.innerText = ""
-        categoryAPI.getCategories()
         videoForm.id = 'add-video-'
         addVideoBtn.id = 'vid-btn-'
     }
