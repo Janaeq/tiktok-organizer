@@ -9,7 +9,8 @@ class CategoriesAdapter {
         fetch(this.url)
         .then(r => r.json())
         .then(categories => {
-            categories.map(category => {
+            const sorted = categories.sort((cat1, cat2) => cat1.name.localeCompare(cat2.name))
+            sorted.map(category => {
                 const c = new Category(category.id, category.name, category.videos)
                 c.renderCategories()
             })
