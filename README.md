@@ -16,7 +16,7 @@ rails s
 You can view the API at http://localhost:3000/categories and http://localhost:3000/videos
 
 ### Frontend
-In your terminal, run ``` open index.html``` to open the application.
+In a new terminal, run ``` open index.html``` to open the application.
 Create a category and begin adding videos!
 
 
