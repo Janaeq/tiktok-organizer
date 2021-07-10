@@ -6,6 +6,7 @@ class CategoriesAdapter {
     // INDEX/SHOW
     getCategories = () => {
         // fetch request to base URL, then parse JSON from the response.
+        // get categories to render when going back from one category
         fetch(this.url)
         .then(r => r.json())
         .then(categories => {
