@@ -34,7 +34,6 @@ class Category {
     static deleteCategory(e) {
         categoryAPI.deleteCategory(e.target.id.split('-')[1])
         Category.goHome()
-        categoryAPI.getCategories()
     }
 
     displayCategoryVideos() {
@@ -45,7 +44,7 @@ class Category {
         })
         categoriesContainer.innerHTML = `
         <div>
-            <h2 class="text-left" style="color: white; display: inline-block;">${category.name}</h2>
+            <h2 class="text-left text-capitalize" style="color: white; display: inline-block;">${category.name}</h2>
             <i id="del-${category.id}" class="far fa-trash-alt" style="margin-left: 5px;"></i>
         </div>
         <br>
@@ -82,5 +81,12 @@ class Category {
         categoriesContainer.innerText = ""
         videoForm.id = 'add-video-'
         addVideoBtn.id = 'vid-btn-'
+        if (categoriesContainer.innerText === "") {
+            Category.displayCategories()
+        }
+    }
+
+    static displayCategories() {
+        categoryAPI.getCategories()
     }
 }
