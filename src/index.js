@@ -40,3 +40,7 @@ const displayMessage = (message, duration, id) => {
         }, duration)
     }
   }
+
+
+//   When item is deleted from the db, array in JS is not updated.
+//   How to update array on delete?

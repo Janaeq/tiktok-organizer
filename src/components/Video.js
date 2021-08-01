@@ -68,6 +68,7 @@ class Video {
         embeddedVideo.style = ""
         embeddedVideo.innerHTML = vid.embed_html
         overlay.addEventListener('click', Video.removeEmbeddedVideo)
+        // jquery for deployment
         // $("#embedded-video").load(location.href + " #embedded-video");
     }
 
